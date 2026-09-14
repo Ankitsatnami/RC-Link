@@ -20,12 +20,24 @@ import com.rclink.ui.theme.TextSecondary
 
 @Composable
 fun DashboardScreen(onNavigateToController: (String) -> Unit) {
+    var showConnectionModal by remember { mutableStateOf(false) }
+
+    if (showConnectionModal) {
+        com.rclink.ui.components.ConnectionModal(
+            onDismiss = { showConnectionModal = false },
+            onDeviceSelected = { device ->
+                // TODO: Connect via CommunicationManager
+                showConnectionModal = false
+            }
+        )
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(24.dp)
     ) {
-        HeaderSection()
+        HeaderSection(onConnectClick = { showConnectionModal = true })
         Spacer(modifier = Modifier.height(32.dp))
         Text(
             text = "Select Project",
@@ -50,7 +62,7 @@ fun DashboardScreen(onNavigateToController: (String) -> Unit) {
 }
 
 @Composable
-fun HeaderSection() {
+fun HeaderSection(onConnectClick: () -> Unit) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -71,6 +83,7 @@ fun HeaderSection() {
         }
         
         Card(
+            modifier = Modifier.clickable { onConnectClick() },
             colors = CardDefaults.cardColors(containerColor = SurfaceDark),
             shape = RoundedCornerShape(16.dp)
         ) {
