@@ -25,7 +25,7 @@ import com.rclink.ui.theme.TextSecondary
 
 @Composable
 fun PermissionHelper(
-    onPermissionsGranted: () -> Unit
+    onPermissionsGranted: @Composable () -> Unit
 ) {
     val context = LocalContext.current
     
@@ -50,12 +50,6 @@ fun PermissionHelper(
         contract = ActivityResultContracts.RequestMultiplePermissions()
     ) { permissionsMap ->
         permissionsGranted = permissionsMap.values.all { it }
-    }
-
-    LaunchedEffect(permissionsGranted) {
-        if (permissionsGranted) {
-            onPermissionsGranted()
-        }
     }
 
     if (!permissionsGranted) {
@@ -101,5 +95,7 @@ fun PermissionHelper(
                 }
             }
         }
+    } else {
+        onPermissionsGranted()
     }
 }
