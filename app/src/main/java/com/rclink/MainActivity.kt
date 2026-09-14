@@ -28,6 +28,9 @@ class MainActivity : ComponentActivity() {
                             onNavigateToController = { currentScreen = it }
                         )
                         "car" -> RCCarScreen(onBack = { currentScreen = "dashboard" })
+                        "drone" -> com.rclink.ui.controllers.DroneScreen(onBack = { currentScreen = "dashboard" })
+                        "home" -> com.rclink.ui.controllers.HomeAutoScreen(onBack = { currentScreen = "dashboard" })
+                        "led" -> com.rclink.ui.controllers.LedScreen(onBack = { currentScreen = "dashboard" })
                         else -> DashboardScreen(onNavigateToController = { currentScreen = it })
                     }
                 }
