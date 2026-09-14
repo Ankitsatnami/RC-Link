@@ -6,40 +6,32 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import com.rclink.ui.theme.RCLinkTheme
+import com.rclink.ui.dashboard.DashboardScreen
+import com.rclink.ui.controllers.RCCarScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MaterialTheme {
-                // A surface container using the 'background' color from the theme
+            RCLinkTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("RC Link Developer")
+                    var currentScreen by remember { mutableStateOf("dashboard") }
+
+                    when (currentScreen) {
+                        "dashboard" -> DashboardScreen(
+                            onNavigateToController = { currentScreen = it }
+                        )
+                        "car" -> RCCarScreen(onBack = { currentScreen = "dashboard" })
+                        else -> DashboardScreen(onNavigateToController = { currentScreen = it })
+                    }
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Welcome to $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MaterialTheme {
-        Greeting("RC Link")
     }
 }
