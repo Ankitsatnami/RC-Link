@@ -43,12 +43,12 @@ We've built a live web-based simulator so you can experience the professional gr
 Click the button below to download the latest compiled Android Application directly.
 
 <p align="center">
-  <a href="https://github.com/Ankitsatnami/RC-Link/releases/download/latest/app-debug.apk">
+  <a href="https://github.com/Ankitsatnami/RC-Link/actions/workflows/android.yml">
     <img src="https://img.shields.io/badge/Download_Latest_APK-0078D4?style=for-the-badge&logo=android&logoColor=white&scale=1.5" alt="Download APK" />
   </a>
 </p>
 
-> *Note: Make sure to allow "Install from Unknown Sources" on your Android device to install the application.*
+> *Note: Click the latest successful build in the Actions tab and download the **RC-Link-App** artifact at the bottom!*
 
 ---
 
