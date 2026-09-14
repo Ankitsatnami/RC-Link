@@ -24,6 +24,20 @@ Whether you are communicating over **Bluetooth Classic, Bluetooth Low Energy (BL
 
 ---
 
+## 🎮 Interactive UI Simulator
+
+We've built a live web-based simulator so you can experience the professional grade RC Link Dashboard directly in your browser without installing the app!
+
+<p align="center">
+  <a href="https://ankitsatnami.github.io/RC-Link/">
+    <img src="https://img.shields.io/badge/Launch_UI_Simulator-FF0055?style=for-the-badge&logo=googlechrome&logoColor=white&scale=1.5" alt="Launch Simulator" />
+  </a>
+</p>
+
+*(To enable the simulator on your repo, go to **Settings > Pages**, set the source to `Deploy from a branch`, choose the `main` branch and `/docs` folder, and click Save!)*
+
+---
+
 ## 📥 Direct APK Download
 
 Click the button below to download the latest compiled Android Application directly.
@@ -68,15 +82,15 @@ Drag and drop buttons, sliders, and joysticks to build your own perfect interfac
 RC Link separates UI logic from hardware communication using a robust, highly modular architecture:
 
 ```mermaid
-graph TD;
-    UI[Jetpack Compose UI Dashboards] --> CM[Command Manager];
-    CM --> CommM[Communication Manager];
-    CommM --> BT[Bluetooth Classic];
-    CommM --> BLE[Bluetooth LE];
-    CommM --> WIFI[Wi-Fi TCP/UDP];
-    BT --> ESP[ESP32 Hardware];
-    BLE --> ESP;
-    WIFI --> ESP;
+graph TD
+    UI[Jetpack Compose UI Dashboards] --> CM[Command Manager]
+    CM --> CommM[Communication Manager]
+    CommM --> BT[Bluetooth Classic]
+    CommM --> BLE[Bluetooth LE]
+    CommM --> WIFI[Wi-Fi TCP/UDP]
+    BT --> ESP[ESP32 Hardware]
+    BLE --> ESP
+    WIFI --> ESP
 ```
 
 ---

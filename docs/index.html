@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Link UI Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="intro-text">
+            <h1>RC Link Simulator</h1>
+            <p>Experience the professional grade UI of the RC Link Android App directly in your browser.</p>
+            <div class="status-indicator">
+                <div class="pulse-dot"></div>
+                <span>Simulator Active</span>
+            </div>
+        </div>
+
+        <div class="phone-frame">
+            <div class="notch"></div>
+            <div class="screen">
+                <!-- App Header -->
+                <header class="app-header">
+                    <div class="logo-container">
+                        <img src="https://raw.githubusercontent.com/Ankitsatnami/RC-Link/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher.jpg" alt="Logo" class="app-logo">
+                        <h2>RC Link <span class="pro-badge">PRO</span></h2>
+                    </div>
+                    <div class="connection-status disconnected" id="connectionStatus">
+                        <span class="icon">⭕</span> Not Connected
+                    </div>
+                </header>
+
+                <!-- Dashboard Content -->
+                <main class="dashboard" id="dashboard">
+                    <h3>Select Project</h3>
+                    
+                    <div class="grid-container">
+                        <!-- RC Car Card -->
+                        <div class="project-card" onclick="openController('car')">
+                            <div class="card-icon">🏎️</div>
+                            <h4>RC Car</h4>
+                            <p>Proportional Steering</p>
+                        </div>
+
+                        <!-- Drone Card -->
+                        <div class="project-card" onclick="openController('drone')">
+                            <div class="card-icon">🚁</div>
+                            <h4>Mini Drone</h4>
+                            <p>6-Axis Control</p>
+                        </div>
+
+                        <!-- Home Auto Card -->
+                        <div class="project-card" onclick="openController('home')">
+                            <div class="card-icon">🏠</div>
+                            <h4>Smart Home</h4>
+                            <p>IoT Toggles</p>
+                        </div>
+
+                        <!-- RGB Card -->
+                        <div class="project-card" onclick="openController('led')">
+                            <div class="card-icon">💡</div>
+                            <h4>RGB LED</h4>
+                            <p>PWM Dimming</p>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- RC Car Controller (Hidden by default) -->
+                <div class="controller-screen" id="carController">
+                    <div class="controller-header">
+                        <button class="back-btn" onclick="backToDashboard()">◀ Back</button>
+                        <span>RC Car Controller</span>
+                        <div class="battery-indicator">🔋 85%</div>
+                    </div>
+                    
+                    <div class="joystick-area">
+                        <div class="joystick-container">
+                            <div class="joystick-label">STEERING</div>
+                            <div class="joystick-base" id="joystickLeft">
+                                <div class="joystick-stick"></div>
+                            </div>
+                        </div>
+
+                        <div class="joystick-container">
+                            <div class="joystick-label">THROTTLE</div>
+                            <div class="joystick-base" id="joystickRight">
+                                <div class="joystick-stick"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="action-btn emergency" onclick="triggerHaptic()">EMERGENCY STOP</button>
+                        <button class="action-btn" onclick="triggerHaptic()">HORN 🔊</button>
+                    </div>
+
+                    <div class="data-console">
+                        <div class="console-header">Live Telemetry</div>
+                        <div class="console-log" id="consoleLog">
+                            <div class="log-entry sys">[SYSTEM] Connecting to ESP32...</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
